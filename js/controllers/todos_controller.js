@@ -1,4 +1,4 @@
-Todos.TodosController = Ember.ArrayController.extend({
+Dnd.DndController = Ember.ArrayController.extend({
   actions: {
     createTodo: function () {
       // Get the todo title set by the "New Todo" text field
@@ -40,7 +40,7 @@ Todos.TodosController = Ember.ArrayController.extend({
   completed: function () {
     return this.filterProperty('isCompleted', true).get('length');
   }.property('@each.isCompleted'),
-  
+
   allAreDone: function (key, value) {
     if (value === undefined) {
       return !!this.get('length') && this.everyProperty('isCompleted', true);

@@ -1,4 +1,4 @@
-Todos.TodoController = Ember.ObjectController.extend({
+Dnd.TodoController = Ember.ObjectController.extend({
   actions: {
     editTodo: function () {
       this.set('isEditing', true);
