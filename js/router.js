@@ -1,41 +1,41 @@
-Todos.Router.map(function () {
-  this.resource('todos', { path: '/' }, function () {
-    // additional child routes    
+Dnd.Router.map(function () {
+  this.resource('dnd', { path: '/' }, function () {
+    // additional child routes
     this.route('active');
     this.route('completed');
   });
 });
 
-Todos.TodosRoute = Ember.Route.extend({
+Dnd.DndRoute = Ember.Route.extend({
   model: function () {
     return this.store.find('todo');
   }
 });
 
-Todos.TodosIndexRoute = Ember.Route.extend({
+Dnd.DndIndexRoute = Ember.Route.extend({
   model: function () {
-    return this.modelFor('todos');
+    return this.modelFor('dnd');
   }
 });
 
-Todos.TodosActiveRoute = Ember.Route.extend({
+Dnd.DndActiveRoute = Ember.Route.extend({
   model: function(){
     return this.store.filter('todo', function (todo) {
       return !todo.get('isCompleted');
     });
   },
   renderTemplate: function(controller){
-    this.render('todos/index', {controller: controller});
+    this.render('dnd/index', {controller: controller});
   }
 });
 
-Todos.TodosCompletedRoute = Ember.Route.extend({
+Dnd.DndCompletedRoute = Ember.Route.extend({
   model: function(){
     return this.store.filter('todo', function (todo) {
       return todo.get('isCompleted');
     });
   },
   renderTemplate: function(controller){
-    this.render('todos/index', {controller: controller});
+    this.render('dnd/index', {controller: controller});
   }
 });
