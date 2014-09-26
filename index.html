@@ -2,78 +2,191 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Ember.js • TodoMVC</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Ember.js • DND</title>
+  <link rel="stylesheet" href="css/dndstyles.css" />
 </head>
-<body>
-  <script type="text/x-handlebars" data-template-name="dnd/index">
-  <ul id="todo-list">
-    {{#each itemController="todo"}}
-      <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
-        {{#if isEditing}}
-          {{edit-todo class="edit" value=title focus-out="acceptChanges" insert-newline="acceptChanges"}}
-        {{else}}
-          {{input type="checkbox" checked=isCompleted class="toggle"}}
-          <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button {{action "removeTodo"}} class="destroy"></button>
-        {{/if}}
-      </li>
-    {{/each}}
-  </ul>
-  </script>
+  <body>
+    <script type="text/x-handlebars" data-template-name="dnd">
+    <div id="dndapp" class="main-container">
+      <div class="bar">
+        <div style="float:right;">Level 1 Human Fighter</div>
+        <h1>Default Name</h1>
+      </div>
+      <div class="trait-container">
+        <!-- Begin Basic Attribute -->
+        {{#each itemController="ability"}}
+          <div class="module attribute">
+            <div class="box wrapper">
+              <div class="modifier">{{get-modifier rank}}</div>
+              {{#if isEditing}}
+                {{edit-trait class="value" value=rank focus-out="acceptChanges"
+                           insert-newline="acceptChanges"}}
+              {{else}}
+                <div class="value" {{action "editAbility" on="doubleClick"}}>{{rank}}</div>
+              {{/if}}
+              <strong>{{title}}</strong>
+            </div>
+          </div>
+        {{/each}}
+        <!-- Hit Points -->
+        <div class="module box spilled">
+          <h2>Hit points</h2>
+          <div class="description">
+            <div class="spill-out-wrapper">
+              <div class="spill-out">
+                <div class="spill-out-box">
+                  <h3>Total</h3>
+                  <div>1</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Bloodied</h3>
+                  <div>1</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Surges</h3>
+                  <div>1</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Value</h3>
+                  <div>1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Initiative -->
+        <div class="module box">
+          <h2 class="valued">Initiative<span class="value">+0</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Speed -->
+        <div class="module box">
+          <h2 class="valued">Speed<span class="value">6</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Skills -->
+        <div class="module box skills">
+          <h2>SKILLS</h2>
+          <dl>
+            <div>
+              <dt>Acrobatics</dt>
+              <!-- <dd>bonus</dd>-->
+              <dd>+0</dd>
+            </div>
+            <div>
+              <dt>Arcana</dt>
+              <dd>+0</dd>
+            </div>
+            <div>
+              ...
+            </div>
+          </dl>
+        </div>
+        <!-- AC -->
+        <div class="module box">
+          <h2 class="valued">Armor Class<span class="value">10</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Fortitude -->
+        <div class="module box">
+          <h2 class="valued">Fortitude<span class="value">10</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Reflex -->
+        <div class="module box">
+          <h2 class="valued">Reflex<span class="value">10</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Will -->
+        <div class="module box">
+          <h2 class="valued">Will<span class="value">10</span></h2>
+          <div class="description">
+          </div>
+        </div>
+        <!-- Racial Features -->
+        <div class="module box">
+          <h2>Race features</h2>
+          <div class="description">
+            <h3>Feature Name</h3>
+            <p>Description</p>
+          </div>
+        </div>
+        <!-- Class Features -->
+        <div class="module box">
+          <h2>class features</h2>
+          <div class="description">
+            <h3>Feature Name</h3>
+            <p>Description</p>
+          </div>
+        </div>
+        <!-- feats -->
+        <div class="module box">
+          <h2>feats</h2>
+          <div class="description">
+            <h3>Feature Name</h3>
+            <p>Description</p>
+          </div>
+        </div>
+        <!-- Attacks -->
+        <div class="module box">
+          <h2>attacks</h2>
+          <div style="padding:0px 5px 0px 5px;font-size:8pt;background-color:#CCCCBB;">
+            <div style="float:right;width:60px;text-align:center;">1d4 + 0</div>
+            <div style="float:right;width:60px;text-align:center;">+0 vs AC</div>
+            Melee Basic
+          </div>
+        </div>
+        <!-- Equipment -->
+        <div class="module box">
+          <h2>equipment</h2>
+          <div class="description">
+            <h3>Item Name</h3>
+            <p>Description</p>
+          </div>
+        </div>
+        <!-- Money -->
+        <div class="module box spilled">
+          <h2>Money</h2>
+          <div class="description">
+            <div class="spill-out-wrapper">
+              <div class="spill-out">
+                <div class="spill-out-box">
+                  <h3>Platinum</h3>
+                  <div>0</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Gold</h3>
+                  <div>0</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Silver</h3>
+                  <div>0</div>
+                </div>
+                <div class="spill-out-box">
+                  <h3>Copper</h3>
+                  <div>0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <script type="text/x-handlebars" data-template-name="dnd">
-
-  <section id="todoapp">
-    <header id="header">
-      <h1>todos</h1>
-      {{input type="text" id="new-todo" placeholder="What needs to be done?"
-              value=newTitle action="createTodo"}}
-    </header>
-
-      <section id="main">
-        {{outlet}}
-        {{input type="checkbox" id="toggle-all" checked=allAreDone}}
-      </section>
-
-      <footer id="footer">
-        <span id="todo-count">
-          <strong>{{remaining}}</strong> {{inflection}} left</span>
-        <ul id="filters">
-          <li>
-            {{#link-to "dnd.index" activeClass="selected"}}All{{/link-to}}
-          </li>
-          <li>
-            {{#link-to "dnd.active" activeClass="selected"}}Active{{/link-to}}
-          </li>
-          <li>
-            {{#link-to "dnd.completed" activeClass="selected"}}Completed{{/link-to}}
-          </li>
-        </ul>
-
-        {{#if hasCompleted}}
-          <button id="clear-completed" {{action "clearCompleted"}}>
-            Clear completed ({{completed}})
-          </button>
-        {{/if}}
-      </footer>
-  </section>
-
-  <footer id="info">
-    <p>Double-click to edit a todo</p>
-  </footer>
-
-  </script>
-
-  <script src="js/libs/jquery-1.10.2.min.js"></script>
-  <script src="js/libs/handlebars-1.0.0.js"></script>
-  <script src="js/libs/ember.js"></script>
-  <script src="js/libs/ember-data.js"></script>
-  <script src="js/libs/local_storage_adapter.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/router.js"></script>
-  <script src="js/models/todo.js"></script>
-  <script src="js/controllers/todos_controller.js"></script>
-  <script src="js/controllers/todo_controller.js"></script>
-  <script src="js/views/edit_todo_view.js"></script>
-</body>
+        <!-- end traits -->
+      </div>
+    </div>
+    </script>
+    <script src="js/libs/jquery-1.10.2.min.js"></script>
+    <script src="js/libs/handlebars-1.0.0.js"></script>
+    <script src="js/libs/ember.js"></script>
+    <script src="js/libs/ember-data.js"></script>
+    <script src="js/libs/local_storage_adapter.js"></script>
+    <script src="js/dnd.js"></script>
+    <script src="js/models/ability.js"></script>
+    <script src="js/views/edit_trait_view.js"></script>
+  </body>
 </html>
