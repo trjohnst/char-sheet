@@ -1,7 +1,4 @@
-Dnd.Ability = DS.Model.extend({
-  title: DS.attr('string'),
-  value: DS.attr('number')
-});
+Dnd.Ability = Dnd.Trait.extend();
 
 Dnd.Ability.FIXTURES = [
   {

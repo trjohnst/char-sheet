@@ -6,7 +6,7 @@ Dnd.TraitController = Ember.ObjectController.extend({
     acceptChanges: function() {
       this.set('isEditing', false);
 
-      if (!Ember.isEmpty(this.get('model.rank'))) {
+      if (!Ember.isEmpty(this.get('model.value'))) {
         this.get('model').save();
       }
     }
