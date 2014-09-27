@@ -17,12 +17,12 @@
         {{#each itemController="ability"}}
           <div class="module attribute">
             <div class="box wrapper">
-              <div class="modifier">{{get-modifier rank}}</div>
+              <div class="modifier">{{get-modifier value}}</div>
               {{#if isEditing}}
-                {{edit-trait class="value" value=rank focus-out="acceptChanges"
+                {{edit-trait class="value" value=value focus-out="acceptChanges"
                            insert-newline="acceptChanges"}}
               {{else}}
-                <div class="value" {{action "editAbility" on="doubleClick"}}>{{rank}}</div>
+                <div class="value" {{action "editAbility" on="doubleClick"}}>{{value}}</div>
               {{/if}}
               <strong>{{title}}</strong>
             </div>
@@ -185,8 +185,12 @@
     <script src="js/libs/ember.js"></script>
     <script src="js/libs/ember-data.js"></script>
     <script src="js/libs/local_storage_adapter.js"></script>
-    <script src="js/dnd.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/controllers/ability_controller.js"></script>
+    <script src="js/models/trait.js"></script>
     <script src="js/models/ability.js"></script>
     <script src="js/views/edit_trait_view.js"></script>
+    <script src="js/helpers/get_modifier.js"></script>
   </body>
 </html>
